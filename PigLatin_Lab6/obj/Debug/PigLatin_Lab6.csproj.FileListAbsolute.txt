@@ -1,0 +1,6 @@
+c:\users\tammiemarie\documents\visual studio 2017\Projects\PigLatin_Lab6\PigLatin_Lab6\obj\Debug\PigLatin_Lab6.csprojResolveAssemblyReference.cache
+c:\users\tammiemarie\documents\visual studio 2017\Projects\PigLatin_Lab6\PigLatin_Lab6\bin\Debug\PigLatin_Lab6.exe.config
+c:\users\tammiemarie\documents\visual studio 2017\Projects\PigLatin_Lab6\PigLatin_Lab6\bin\Debug\PigLatin_Lab6.exe
+c:\users\tammiemarie\documents\visual studio 2017\Projects\PigLatin_Lab6\PigLatin_Lab6\bin\Debug\PigLatin_Lab6.pdb
+c:\users\tammiemarie\documents\visual studio 2017\Projects\PigLatin_Lab6\PigLatin_Lab6\obj\Debug\PigLatin_Lab6.exe
+c:\users\tammiemarie\documents\visual studio 2017\Projects\PigLatin_Lab6\PigLatin_Lab6\obj\Debug\PigLatin_Lab6.pdb
