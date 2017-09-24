@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 /*prompt the user for a word
 application will translate the text to Pig Latin and display on console
@@ -11,22 +12,52 @@ namespace PigLatin_Lab6
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to the Pig Latin Translator!");
-
+           
             bool run = true;
             while (run == true)
             {
                 Console.WriteLine("Enter a word to be translated:");
                 string word = (Console.ReadLine());
                 word = word.ToLower();
-                //string pigLatin = ToPigLatin(word);
+                int beginEnd = 0;
 
-                string firstLetter = word.Substring(0, 1);
-                string restOfWord = word.Substring(1, word.Length - 1);
-                string pigWord = restOfWord + firstLetter + "ay";
+                //check if first letter is a vowel
+                char firstLetterOnly = word[0];
+                bool v = IsVowel(firstLetterOnly);
+                if (v == true)
+                {
+                    string vowelWord = word + "way";
+                    Console.WriteLine(vowelWord);
+                }
+                else
+                {
+                    //find where first vowel exists
+                    char[] letters = word.ToCharArray();
+                    foreach (char l in letters)
+                    {
+                        bool b = IsVowel(l);
 
-                Console.WriteLine(pigWord);
+                        if (b == true)
+                        {
+                            PigLatin(word, beginEnd);
+                            break;
+                        }
+                        else
+                        {
+                            beginEnd++;
+                        }
+                    }
+                }
                 run = Continue();
             }
+        }
+        public static string PigLatin(string s, int i)
+        {
+            string wordBegin = s.Substring(0, i);
+            string restOfWord = s.Substring(i, s.Length - i);
+            string pigWord = restOfWord + wordBegin + "ay";
+            Console.WriteLine(pigWord);
+            return pigWord;
         }
         public static bool Continue()
         {
@@ -50,46 +81,21 @@ namespace PigLatin_Lab6
 
             return goOn;
         }
-        /* {
-             //string vowels = "AEIOUaeiou";
-             char[] pigArray = new char[input.Length];
-
-             foreach (char i in input)
-             {
-                 string firstLetter = input.Substring(0, 1);
-                 string restOfWord = input.Substring(1, input.Length - 1);
-
-                 string pigWord = restOfWord + firstLetter + "ay";
-                 return pigWord;
-
-             }
-         }*/
-
-        /*try
-            {
-            Console.WriteLine("Enter a word to be translated:");
-            string word = Console.ReadLine();
-
-            if (String.IsNullOrWhiteSpace(word))
-            {
-                throw new ArgumentException("A word must be entered.");
-            }
-            if (word.Length > 35)
-            {
-                throw new ArgumentException("Name cannot be longer than 35 characters");
-            }
-
-            foreach (char item in word)
-                {
-                if (!char.IsLetter(item))
-                {
-                    return false;
-                }
-            }
-        }
-        catch(ArgumentException ex)
+       
+        //determine which index has the first vowel
+       public static bool IsVowel(char c)
         {
-            Console.WriteLine(ex.Message);
-         }*/
+            string vowels = "AEIOUaeiou";
+            char[] listedVowels = vowels.ToCharArray();
+            
+            if (listedVowels.Contains(c))
+            {
+                return true;
+             }
+            else
+            {
+                return false;
+            }
+         }
     }
 }
