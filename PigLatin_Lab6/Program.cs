@@ -12,18 +12,18 @@ namespace PigLatin_Lab6
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to the Pig Latin Translator!");
-           
+
             bool run = true;
             while (run == true)
             {
                 Console.WriteLine("Enter a word to be translated:");
                 string word = (Console.ReadLine());
-                word = word.ToLower();
-                int beginEnd = 0;
+                //word = word.ToLower();
 
                 //check if first letter is a vowel
                 char firstLetterOnly = word[0];
                 bool v = IsVowel(firstLetterOnly);
+
                 if (v == true)
                 {
                     string vowelWord = word + "way";
@@ -31,7 +31,7 @@ namespace PigLatin_Lab6
                 }
                 else
                 {
-                    //find where first vowel exists
+                    int beginEnd = 0;
                     char[] letters = word.ToCharArray();
                     foreach (char l in letters)
                     {
@@ -39,7 +39,7 @@ namespace PigLatin_Lab6
 
                         if (b == true)
                         {
-                            PigLatin(word, beginEnd);
+                            string var = PigLatin(word, beginEnd);
                             break;
                         }
                         else
@@ -59,6 +59,7 @@ namespace PigLatin_Lab6
             Console.WriteLine(pigWord);
             return pigWord;
         }
+
         public static bool Continue()
         {
             Console.WriteLine("Translate another line? y/n");
@@ -78,24 +79,23 @@ namespace PigLatin_Lab6
                 Console.WriteLine("I don't understand that, let's try again");
                 goOn = Continue();
             }
-
             return goOn;
         }
-       
+
         //determine which index has the first vowel
-       public static bool IsVowel(char c)
+        public static bool IsVowel(char c)
         {
             string vowels = "AEIOUaeiou";
             char[] listedVowels = vowels.ToCharArray();
-            
+
             if (listedVowels.Contains(c))
             {
                 return true;
-             }
+            }
             else
             {
                 return false;
             }
-         }
+        }
     }
 }
