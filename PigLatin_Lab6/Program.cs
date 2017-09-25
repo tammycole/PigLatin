@@ -16,37 +16,41 @@ namespace PigLatin_Lab6
             bool run = true;
             while (run == true)
             {
-                Console.WriteLine("Enter a word to be translated:");
-                string word = (Console.ReadLine());
-                //word = word.ToLower();
+                Console.WriteLine("Enter a sentence to be translated:");
+                string sentence = (Console.ReadLine());
+                string[] splitSentence = sentence.Split(' ');
 
-                //check if first letter is a vowel
-                char firstLetterOnly = word[0];
-                bool v = IsVowel(firstLetterOnly);
+                foreach (var word in splitSentence)
+                {
+                    //check if first letter is a vowel
+                    char firstLetterOnly = word[0];
+                    bool v = IsVowel(firstLetterOnly);
 
-                if (v == true)
-                {
-                    string vowelWord = word + "way";
-                    Console.WriteLine(vowelWord);
-                }
-                else
-                {
-                    int beginEnd = 0;
-                    char[] letters = word.ToCharArray();
-                    foreach (char l in letters)
+                    if (v == true)
                     {
-                        bool b = IsVowel(l);
+                        string vowelWord = word + "way";
+                        Console.Write(vowelWord + " ");
+                    }
+                    else
+                    {
+                        int beginEnd = 0;
+                        char[] letters = word.ToCharArray();
+                        foreach (char l in letters)
+                        {
+                            bool b = IsVowel(l);
 
-                        if (b == true)
-                        {
-                            string var = PigLatin(word, beginEnd);
-                            break;
-                        }
-                        else
-                        {
-                            beginEnd++;
+                            if (b == true)
+                            {
+                                string var = PigLatin(word, beginEnd);
+                                break;
+                            }
+                            else
+                            {
+                                beginEnd++;
+                            }
                         }
                     }
+
                 }
                 run = Continue();
             }
@@ -56,7 +60,7 @@ namespace PigLatin_Lab6
             string wordBegin = s.Substring(0, i);
             string restOfWord = s.Substring(i, s.Length - i);
             string pigWord = restOfWord + wordBegin + "ay";
-            Console.WriteLine(pigWord);
+            Console.Write(pigWord + " ");
             return pigWord;
         }
 
@@ -99,3 +103,5 @@ namespace PigLatin_Lab6
         }
     }
 }
+
+
